@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "is-url": "^1.2.4",
     "mongodb": "^2.2.36",
-    "moongoose": "0.0.5",
-    "node-sass": "^6.0.0"
+    "mongoose": "^5.12.14",
+    "node-sass": "^6.0.0",
+    "shortid": "^2.2.16"
   }
 }
