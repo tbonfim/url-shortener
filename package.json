@@ -7,7 +7,7 @@
     "server": "cd server && node server.js",
     "client": "cd client && npm start",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "test:server": "jest",
+    "test:server": "concurrently --kill-others-on-fail \"npm run server\" \"jest\"",
     "test:client": "cd client && npm test"
   },
   "jest": {
@@ -16,16 +16,15 @@
     ],
     "testRegex": "./server/src/tests/.*.test.js$"
   },
-  "author": "",
+  "author": "Thiago Bonfim",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "is-url": "^1.2.4",
-    "mongodb": "^2.2.36",
     "mongoose": "^5.12.14",
-    "node-sass": "^6.0.0",
     "shortid": "^2.2.16"
   },
   "devDependencies": {

@@ -18,7 +18,6 @@ module.exports = app => {
 
   app.post('/api/urlshortener', async (request, response) => {
     let { url } = request.body;
-    console.log(request.body)
     // force protocol 
     if( url.indexOf('http') < 0) {
       url = 'http://' + url;
