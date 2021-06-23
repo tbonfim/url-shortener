@@ -17,9 +17,8 @@ module.exports = app => {
   });
 
   app.post('/api/urlshortener', async (request, response) => {
-    console.log(request.body);
-    // console.log(response);
     let { url } = request.body;
+    console.log(request.body)
     // force protocol 
     if( url.indexOf('http') < 0) {
       url = 'http://' + url;
@@ -29,7 +28,6 @@ module.exports = app => {
       try {
         const savedUrl = await UrlShortener.findOne({originalUrl: url});
         if(savedUrl) {
-          console.log('already saved ', url, savedUrl);
           const { originalUrl, shortUrl} = savedUrl;
           response.status(200).json({success: true, originalUrl: originalUrl, shortUrl: shortUrl});
         } else {
@@ -40,8 +38,6 @@ module.exports = app => {
             shortUrl: shortId
           });
           await newUrl.save();
-          console.log('saving new', newUrl);
-
           response.status(200).json({success: true, originalUrl: url, shortUrl: shortId});
         }
       } catch (err) {

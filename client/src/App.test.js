@@ -16,7 +16,7 @@ test('Shows error to an empty url', async() => {
   });
 });
 
-test('Should display the redirect link if a valid URL was set', async() => {
+test('For this test, server MUST be running - Should display the redirect link if a valid URL was set', async() => {
   render(<App />);
   const input = screen.getByRole('textbox');
 

@@ -1,5 +1,6 @@
 module.exports = {
   port: 5001,
+  host: "http://localhost",
   mongo: {
     uri: 'mongodb+srv://urladmin:urladmin@cluster0.wlull.mongodb.net/urlshortener?retryWrites=true&w=majority',
     settings: {

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET /api/urlshortener/:id should list one unique url object: GET /api/urlshortener/d92BHTZ7B 1`] = `
+Object {
+  "originalUrl": "http://apple.com",
+  "shortUrl": "d92BHTZ7B",
+  "success": true,
+}
+`;
+
+exports[`POST /api/urlshortener Should not shorten urls already shortened: POST /api/urlshortener 1`] = `
+Object {
+  "originalUrl": "http://apple.com",
+  "shortUrl": "d92BHTZ7B",
+  "success": true,
+}
+`;
