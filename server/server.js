@@ -18,9 +18,9 @@ mongoose.connect(config.mongo.uri, { ...config.mongo.settings}, (err, db) => {
 const app = express();
 const port = process.env.PORT || config.port;
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors);
+app.use(bodyParser.json());
+app.use(cors());
 
 UrlShortenerRouter(app);
-
 
 app.listen(port, () => console.log(`Url Shortener app running on port ${port}`));

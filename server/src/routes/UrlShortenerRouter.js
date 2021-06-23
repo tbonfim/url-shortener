@@ -17,7 +17,8 @@ module.exports = app => {
   });
 
   app.post('/api/urlshortener', async (request, response) => {
-    
+    console.log(request.body);
+    // console.log(response);
     let { url } = request.body;
     // force protocol 
     if( url.indexOf('http') < 0) {
@@ -29,7 +30,8 @@ module.exports = app => {
         const savedUrl = await UrlShortener.findOne({originalUrl: url});
         if(savedUrl) {
           console.log('already saved ', url, savedUrl);
-          response.status(200).json({success: true, data: savedUrl});
+          const { originalUrl, shortUrl} = savedUrl;
+          response.status(200).json({success: true, originalUrl: originalUrl, shortUrl: shortUrl});
         } else {
           
           const shortId = shortid.generate();
@@ -40,7 +42,7 @@ module.exports = app => {
           await newUrl.save();
           console.log('saving new', newUrl);
 
-          response.status(200).json({success: true, data: newUrl});
+          response.status(200).json({success: true, originalUrl: url, shortUrl: shortId});
         }
       } catch (err) {
         response.status(500).json({success: false, message: config.messages.error});
@@ -54,9 +56,10 @@ module.exports = app => {
     const id = request.params.id;
     
     try{
-      const shortUrl = await UrlShortener.findOne({shortUrl: id});
-      if(shortUrl) {
-        response.status(200).json({success: true, data: shortUrl});
+      const url = await UrlShortener.findOne({shortUrl: id});
+      if(url) {
+        const { originalUrl, shortUrl} = url;
+        response.status(200).json({success: true, originalUrl: originalUrl, shortUrl: shortUrl });
       } else {
         response.status(401).json({success: false, message: config.messages.notFound});
       }
