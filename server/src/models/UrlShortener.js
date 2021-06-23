@@ -1,9 +1,9 @@
-const moongoose = require('mongoose');
+const moongoose = require("mongoose");
 const { Schema } = moongoose;
 
 const UrlShortenerSchema = new Schema({
   originalUrl: String,
-  shortUrl: String
+  shortUrl: String,
 });
 
-moongoose.model('UrlShortener', UrlShortenerSchema);
+moongoose.model("UrlShortener", UrlShortenerSchema);

@@ -1,8 +1,9 @@
-import './App.css';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Redirect from './components/Redirect';
-import Form from './components/Form';
-function App() { //let { id } = useParams();
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Redirect from "./components/Redirect";
+import Form from "./components/Form";
+function App() {
+  //let { id } = useParams();
   return (
     <Router>
       <div className="app-wrapper">
@@ -12,7 +13,6 @@ function App() { //let { id } = useParams();
         </Switch>
       </div>
     </Router>
-
   );
 }
 
