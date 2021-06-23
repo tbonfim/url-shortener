@@ -1,6 +1,6 @@
 # URL Shortener
 
-This is an application that allows users to shorten URLs and navigate to the original URLs. This is a Node.js based application, with Express and React. 
+This is an application that allows users to shorten URLs and navigate to the original URLs. This is a `Node.js` based application developed using version `v14.17.1`, with Express and React. 
 
 # Requirements
 
@@ -9,6 +9,13 @@ This is an application that allows users to shorten URLs and navigate to the ori
  3. When visiting that "shortened" version of the URL, the user is redirected to the original URL.
  4.  Additionally, if a URL has already been shortened by the system, and it is entered a second time, the first shortened URL should be given back to the user.
 
+# Approach
+The idea of the app is to allow users to shorten URL and be redirected to the original website. To support that features, I used a non-relational database to keep track of the shortened URLs. This way, each URL will be unique in the app database, meaning that the same ID will be used if one or more users enter the same URL more than once. To avoid the risk of duplicated entries, I have chosen not to use a hash function here, instead, I used an npm package called `shortid` that creates short non-sequential URL-friendly unique ids based on [a-zA-Z0-9] charset which is perfect for URL shorteners.
+
+The app supports 3 different routes, but only 2 are reached by the client-side application. 
+1. A `GET` request that returns a list with all shortened URLs - not used by the client-side app, just helped me in development time.
+2. A `POST` request that saves a new URL shortened into the database if the URL hasn't been already shortened or return the existing one
+3. A `GET` request that receives a shortened URL id and returns the original URL, used to redirect the user to the originalUrl.
 # Tech details
 
 On the server-side of the app, I used an external database to keep track of the shortened URL - hosted on `mongoDB` cloud and used `Mongoose` to make the connection in the app. I also used the npm package `shortid` to generate the shorten URL slugs, and `isUrl` package to help to validate the input. `Jest` was used to build the server-side tests.
